@@ -1,0 +1,90 @@
+# .github/workflows/deploy-docs.yml
+name: Deploy Docs (on latest push to main branch)
+# It builds and deploys the latest version of the documentation to GitHub Pages.
+# IMPORTANT: Ensure Repo Settings / Pages / Build and deployment / Set Source to `GitHub Actions`.
+
+# CI PHASES A-B-C-D:
+# - Assemble: Install dependencies, verify environment setup
+# - Baseline: Core validation (types exist, lint passes, tests pass)
+# - Coverage: Generate reports and upload artifacts
+# - Deploy: Build package and docs (sanity checks for release readiness)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write # gh-pages deployment
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUNBUFFERED: "1" # real-time logging
+  PYTHONIOENCODING: "utf-8"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # ------------------- ASSEMBLE -------------------
+
+      - name: A1) Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for tags
+
+      - name: A2) Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: A3) Pin Python version for consistency
+        run: uv python pin 3.12
+
+      - name: A4) Sync to install dependencies
+        run: uv sync --extra dev --extra docs --upgrade
+
+      # ------------------- BASELINE CHECKS -------------------
+
+      - name: B1) Check for MkDocs configuration
+        id: mkdocs_check
+        run: |
+          if [ -f "mkdocs.yml" ] || [ -f "mkdocs.yaml" ]; then
+            echo "has_mkdocs=true" >> $GITHUB_OUTPUT
+            echo "SUCCESS: MkDocs configuration found - proceeding with deployment"
+          else
+            echo "has_mkdocs=false" >> $GITHUB_OUTPUT
+            echo "NOTHING TO DO: No MkDocs configuration found - skipping documentation deployment"
+          fi
+
+      # ------------ DEPLOY ------------------
+
+      - name: D1) Build docs with (mkdocs) but don't deploy yet
+        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
+        run: uv run mkdocs build --strict
+
+      - name: D2) Configure GitHub Pages
+        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true  # Auto-enable Pages if not already enabled
+        continue-on-error: true  # Continue even if Pages config fails
+        id: pages_config
+
+      - name: D3) Upload site as artifact
+        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site
+
+      - name: D4) Deploy to GitHub Pages
+        if: steps.mkdocs_check.outputs.has_mkdocs == 'true' && steps.pages_config.outcome == 'success'
+        id: deployment
+        uses: actions/deploy-pages@v4
