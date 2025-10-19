@@ -1,4 +1,9 @@
-# 2. One-Time Project Setup
+# 2. Set Up Project (Once per Project)
+
+> Keep track of how long this takes, and if you encounter any issues and how you resolve them.
+> Estimated time: about an hour
+
+## Overview
 
 We initialize Python project using modern tools:
 
@@ -9,7 +14,7 @@ We initialize Python project using modern tools:
 
 Each step below illustrates how professional analysts initialize a new analytics project.
 
-## Task 2.1. Copy This Repository on GitHub
+## Step 2.1. Copy This Repository on GitHub
 
 1. Log in to **GitHub** in your browser.
 2. Go to <https://github.com/denisecase/pro-analytics-02-starter>.
@@ -20,7 +25,7 @@ Each step below illustrates how professional analysts initialize a new analytics
 5. Set visibility to **Public**.
 6. Click **Create repository**.
 
-## Task 2.2 Enable GitHub Pages
+## Step 2.2 Enable GitHub Pages (Recommended)
 
 Before leaving GitHub, set up your repository to host your code documentation automatically.
 
@@ -29,12 +34,11 @@ Before leaving GitHub, set up your repository to host your code documentation au
 3. Under **Source**, choose **GitHub Actions**.
 4. Click the **Code** tab to return to the regular view.
 
-
 GitHub will automatically build and publish your documentation when you push changes.
 
 ---
 
-## Task 2.3. Clone Your Repo to Your Computer and Open In VS Code
+## Step 2.3. Clone Your Repo to Your Computer and Open In VS Code
 
 1. Open VS Code
 2. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)
@@ -69,19 +73,19 @@ cd your-repository-name
 code .
 ```
 
-Replace `YOUR_REPOSITORY_URL_HERE` with your actual URL and `your-repository-name` with the name you chose in Task 2.1.
+Replace `YOUR_REPOSITORY_URL_HERE` with your actual URL and `your-repository-name` with the name you chose in Step 2.1.
 
 </details>
 
 ---
 
-## Task 2.4. Install Recommended Extensions
+## Step 2.4. Install Recommended VS Code Extensions
 
 When you first open this project, VS Code will prompt you to install recommended extensions. Click "Install All" to get Python support, Jupyter notebooks, linting, formatting, and Git integration. See `.vscode/extensions.json` for the complete list.
 
 ---
 
-## Task 2.5. One-Time Environment Setup
+## Step 2.5. Set Up Virtual Environment (.venv)
 
 Using your VS Code terminal, run the following commands to:
 
@@ -114,7 +118,7 @@ source .venv/bin/activate
 
 ---
 
-## Task 2.6. Git add-commit-push
+## Step 2.6. Git add-commit-push
 
 Open a terminal in VS Code (PowerShell, zsh, or bash).
 
@@ -135,7 +139,7 @@ If anything fails, let us know in the associated discussion.
 
 ---
 
-## Task 2.7. Personalize Project Files
+## Step 2.7. Personalize Project Files
 
 After verifying that the starter project works correctly, start to customize it.
 
@@ -154,7 +158,7 @@ This will establish this as your project and personalize the associated document
 
 ---
 
-## Task 2.8. Git add-commit-push
+## Step 2.8. Git add-commit-push
 
 Open a terminal in VS Code (PowerShell, zsh, or bash).
 

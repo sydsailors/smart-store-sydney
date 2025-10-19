@@ -2,6 +2,17 @@
 # lists content that does NOT need to be tracked for project history.
 
 # ----------------------------------------
+# VS Code (special case)
+# ----------------------------------------
+# Ignore all VS Code folder content by default
+.vscode/*
+
+# KEEP THESE FILES in a starter template
+# Optional: Remove them after personalizing a project
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# ----------------------------------------
 # macOS and Windows system files
 # ----------------------------------------
 .DS_Store
@@ -18,7 +29,6 @@ desktop.ini
 # ----------------------------------------
 # Editors / IDEs
 # ----------------------------------------
-.vscode/
 .idea/
 *.code-workspace
 

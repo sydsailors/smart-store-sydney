@@ -53,38 +53,34 @@ jobs:
 
       # ------------------- BASELINE CHECKS -------------------
 
-      - name: B1) Check for MkDocs configuration
-        id: mkdocs_check
+      - name: B1) Fail fast if no MkDocs configuration
         run: |
           if [ -f "mkdocs.yml" ] || [ -f "mkdocs.yaml" ]; then
-            echo "has_mkdocs=true" >> $GITHUB_OUTPUT
-            echo "SUCCESS: MkDocs configuration found - proceeding with deployment"
+            echo "MkDocs configuration found. Proceeding."
           else
-            echo "has_mkdocs=false" >> $GITHUB_OUTPUT
-            echo "NOTHING TO DO: No MkDocs configuration found - skipping documentation deployment"
+            echo "ERROR: mkdocs.yml not found."
+            echo "If you do not want documentation deployment,"
+            echo "delete .github/workflows/deploy-docs.yml (or add mkdocs.yml)."
+            exit 1
           fi
 
       # ------------ DEPLOY ------------------
 
-      - name: D1) Build docs with (mkdocs) but don't deploy yet
-        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
+      - name: D1) Build docs (mkdocs --strict)
         run: uv run mkdocs build --strict
 
-      - name: D2) Configure GitHub Pages
-        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true  # Auto-enable Pages if not already enabled
-        continue-on-error: true  # Continue even if Pages config fails
-        id: pages_config
+      - name: D2) Assert site artifact exists
+        run: |
+          test -d site && test -f site/index.html || {
+            echo "ERROR: MkDocs build produced no site/index.html"
+            exit 1
+          }
 
       - name: D3) Upload site as artifact
-        if: steps.mkdocs_check.outputs.has_mkdocs == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./site
 
       - name: D4) Deploy to GitHub Pages
-        if: steps.mkdocs_check.outputs.has_mkdocs == 'true' && steps.pages_config.outcome == 'success'
         id: deployment
         uses: actions/deploy-pages@v4

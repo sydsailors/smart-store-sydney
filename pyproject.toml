@@ -47,6 +47,7 @@ docs = [
   "mkdocstrings[python]",  # Auto-generate API docs from docstrings
   "livereload",            # Enables live reload (auto-refresh on edit)
   "watchdog",              # Faster and more reliable file watching
+  "ruff",                  # Needed so mkdocstrings can format signatures
 ]
 
 [tool.setuptools]
