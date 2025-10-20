@@ -15,7 +15,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 description = "Professional Python starter project using uv and a src layout"
-license = {text = "MIT"}
+license = "MIT"
 name = "analytics-project" # PACKAGE name (matches src folder except with dashes)
 readme = "README.md"
 requires-python = ">=3.12"
@@ -105,7 +105,7 @@ force-sort-within-sections = true
 [tool.ruff.lint.per-file-ignores]
 "src/**/__init__.py" = ["D104"]
 "tests/**/*.py" = ["TID251", "TID252", "S101", "D"]
-
+"notebooks/**/*.ipynb" = ["F821"]
 
 # Optional: Pyright checks that our type hints are correct
 [tool.pyright]
