@@ -39,12 +39,6 @@ uv run pre-commit install
 uv run python --version
 ```
 
-**Windows (PowerShell):**
-
-```shell
-.\.venv\Scripts\activate
-```
-
 **macOS / Linux / WSL:**
 
 ```shell
