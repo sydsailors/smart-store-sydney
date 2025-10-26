@@ -171,3 +171,5 @@ uv run python -m analytics_project.demo_module_basics
 
 To run Jupyter Notebook
 ```shell
+uv run jupyter lab
+```
