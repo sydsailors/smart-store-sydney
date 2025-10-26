@@ -87,8 +87,8 @@ uv run pytest
 
 NOTE: The second `git add .` ensures any automatic fixes made by Ruff or pre-commit are included before testing or committing.
 
-<details>
-<summary>Click to see a note on best practices</summary>
+</details>
+</summary>Click to see a note on best practices</summary>
 
 `uvx` runs the latest version of a tool in an isolated cache, outside the virtual environment.
 This keeps the project light and simple, but behavior can change when the tool updates.
@@ -160,5 +160,3 @@ With a working version safe in GitHub, start making changes to the code.
 Before starting a new session, remember to do a `git pull` and keep your tools updated.
 
 Each time forward progress is made, remember to git add-commit-push.
-
-
