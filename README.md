@@ -160,3 +160,14 @@ With a working version safe in GitHub, start making changes to the code.
 Before starting a new session, remember to do a `git pull` and keep your tools updated.
 
 Each time forward progress is made, remember to git add-commit-push.
+
+### Project Commands 
+
+To run Python script
+
+```shell
+uv run python -m analytics_project.demo_module_basics
+```
+
+To run Jupyter Notebook
+```shell
