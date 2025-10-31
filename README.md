@@ -161,7 +161,7 @@ Before starting a new session, remember to do a `git pull` and keep your tools u
 
 Each time forward progress is made, remember to git add-commit-push.
 
-### Project Commands 
+### Project Commands
 
 To run Python script
 
@@ -170,6 +170,7 @@ uv run python -m analytics_project.demo_module_basics
 ```
 
 To run Jupyter Notebook
+
 ```shell
 uv run jupyter lab
 ```
