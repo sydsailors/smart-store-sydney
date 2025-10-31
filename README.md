@@ -111,23 +111,19 @@ uv run mkdocs serve
 ### 3.4 Execute
 
 This project includes demo code.
-Run the demo Python modules to confirm everything is working.
+Run the data_prep Python module to confirm everything is working.
 
 In VS Code terminal, run:
 
 ```shell
-uv run python -m analytics_project.demo_module_basics
-uv run python -m analytics_project.demo_module_languages
-uv run python -m analytics_project.demo_module_stats
-uv run python -m analytics_project.demo_module_viz
+uv run python -m analytics_project.data_prep
 ```
 
 You should see:
 
 - Log messages in the terminal
-- Greetings in several languages
-- Simple statistics
-- A chart window open (close the chart window to continue).
+- Data files loaded and read
+- DataFrame sizes
 
 If this works, your project is ready! If not, check:
 
