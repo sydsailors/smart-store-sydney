@@ -95,7 +95,7 @@ ProductID,ProductName,Category,UnitPrice,ManufactureYear,AvailabilityStatus
 2093,Home-Real,Home,755.94,2003,In stock
 2094,Office-Fight,Clothing,493.35,2009,Out of stock
 2095,Home-Seem,Office,490.79,2018,In stock
-2096,Office-Discuss,Home,672.18,2021,Discontinued
+2096,Office-Discuss,Home,672.18,1990,Discontinued
 2097,Office-Recent,Clothing,842.1,2006,Out of stock
 2098,Clothing-Trouble,Electronics,907.86,2004,In stock
 2099,Electronics-Several,Electronics,646.32,2019,In stock
