@@ -98,6 +98,8 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info(f"FUNCTION START: remove_duplicates with dataframe shape={df.shape}")
 
+    df = df.drop_duplicates(subset=['CustomerID'])
+
     # Let's delegate this to the DataScrubber class
     # First, create an instance of the DataScrubber class
     # by passing in the dataframe as an argument.
