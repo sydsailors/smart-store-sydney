@@ -1,0 +1,97 @@
+productid,productname,category,unitprice,manufactureyear,availabilitystatus
+2000,Electronics-Be,Electronics,969.0,2021,In stock
+2001,Electronics-Be,Clothing,412.0,2007,Out of stock
+2002,Office-Family,Clothing,866.0,2019,Discontinued
+2003,Electronics-Training,Clothing,385.0,2025,In stock
+2004,Office-Where,Home,927.0,2012,In stock
+2005,Office-Huge,Home,429.0,2020,Out of stock
+2006,Office-Class,Clothing,198.0,2010,Discontinued
+2007,Clothing-Over,Electronics,583.0,2003,In stock
+2008,Electronics-Skin,Home,67.0,2018,In stock
+2009,Office-Raise,Clothing,66.0,2009,Out of stock
+2010,Electronics-Themselves,Clothing,78.0,2004,Discontinued
+2011,Electronics-Religious,Clothing,410.0,2015,In stock
+2012,Clothing-Artist,Electronics,623.0,2023,Out of stock
+2013,Office-Cultural,Home,935.0,2011,In stock
+2014,Clothing-Eat,Home,246.0,2006,Discontinued
+2015,Office-Itself,Clothing,675.0,2001,In stock
+2016,Home-He,Office,323.0,2008,Out of stock
+2017,Electronics-Feeling,Electronics,464.0,2022,In stock
+2019,Home-History,Clothing,934.0,2013,In stock
+2020,Electronics-Share,Clothing,376.0,2024,Out of stock
+2021,Clothing-Skill,Office,835.0,2005,In stock
+2022,Home-Economy,Electronics,671.0,2017,In stock
+2023,Home-Yeah,Electronics,940.0,2016,Discontinued
+2024,Clothing-Paper,Home,124.0,2019,Out of stock
+2025,Electronics-Assume,Clothing,280.0,2002,In stock
+2026,Clothing-Use,Home,212.0,2020,In stock
+2027,Home-Purpose,Office,259.0,2014,Discontinued
+2028,Electronics-Take,Electronics,638.0,2010,Out of stock
+2029,Home-Yourself,Electronics,14.0,2023,In stock
+2030,Clothing-First,Home,170.0,2018,Discontinued
+2031,Office-Develop,Office,565.0,2009,In stock
+2032,Electronics-There,Electronics,946.0,2001,In stock
+2033,Clothing-Argue,Electronics,836.0,2011,Out of stock
+2034,Clothing-Feel,Office,136.0,2022,Discontinued
+2035,Home-According,Home,900.0,2015,In stock
+2036,Electronics-Candidate,Home,218.0,2003,In stock
+2038,Office-Soon,Clothing,927.0,2008,In stock
+2039,Clothing-Need,Clothing,976.0,2024,Discontinued
+2040,Clothing-Determine,Office,35.0,2017,Out of stock
+2041,Home-Assume,Office,804.0,2016,In stock
+2042,Clothing-Lawyer,Home,168.0,2021,Discontinued
+2043,Electronics-Practice,Office,873.0,2007,In stock
+2044,Office-Society,Clothing,208.0,2005,In stock
+2045,Office-Next,Home,312.0,2019,Out of stock
+2046,Clothing-Worry,Clothing,33.0,2012,Discontinued
+2047,Clothing-Hair,Office,335.0,2014,In stock
+2048,Electronics-Candidate,Home,358.0,2002,In stock
+2049,Office-Easy,Home,940.0,2004,Out of stock
+2050,Electronics-Young,Home,187.0,2020,In stock
+2051,Home-Century,Electronics,117.0,2001,Discontinued
+2052,Office-Year,Home,731.0,2025,Out of stock
+2053,Home-Ground,Office,610.0,2008,In stock
+2054,Electronics-Above,Office,901.0,2013,In stock
+2055,Clothing-Politics,Home,54.0,2023,Discontinued
+2056,Office-About,Electronics,525.0,2011,Out of stock
+2057,Clothing-Identify,Home,437.0,2006,In stock
+2058,Home-Wear,Home,667.0,2009,In stock
+2059,Electronics-Clear,Home,512.0,2010,Discontinued
+2060,Office-Term,Home,408.0,2007,In stock
+2061,Home-Quite,Clothing,200.0,2024,Out of stock
+2062,Office-Receive,Clothing,619.0,2005,In stock
+2063,Home-Good,Office,552.0,2017,Discontinued
+2064,Electronics-Stop,Home,294.0,2022,In stock
+2065,Office-Animal,Home,470.0,2003,In stock
+2066,Office-Occur,Clothing,516.0,2021,Out of stock
+2067,Clothing-Remain,Electronics,291.0,2014,Discontinued
+2068,Home-Read,Electronics,820.0,2002,In stock
+2069,Clothing-Garden,Home,232.0,2020,In stock
+2070,Clothing-About,Clothing,34.0,2004,Out of stock
+2071,Clothing-Success,Office,615.0,2015,In stock
+2072,Electronics-Become,Office,420.0,2018,Discontinued
+2073,Clothing-Executive,Office,499.0,2009,Out of stock
+2074,Clothing-Strong,Clothing,660.0,2023,In stock
+2075,Electronics-Letter,Electronics,781.0,2008,Discontinued
+2076,Clothing-Affect,Clothing,806.0,2006,In stock
+2077,Office-Ball,Electronics,562.0,2012,In stock
+2078,Electronics-Film,Office,142.0,2001,Out of stock
+2079,Office-Who,Home,951.0,2019,Discontinued
+2080,Office-Doctor,Office,832.0,2025,In stock
+2081,Office-Light,Clothing,746.0,2007,In stock
+2082,Office-Figure,Office,267.0,2010,Out of stock
+2083,Clothing-Cut,Home,768.0,2024,In stock
+2084,Office-Stuff,Clothing,282.0,2011,Discontinued
+2085,Electronics-Officer,Home,242.0,2020,Out of stock
+2086,Home-Of,Home,894.0,2013,In stock
+2088,Office-Evening,Clothing,709.0,2005,In stock
+2089,Electronics-Action,Office,414.0,2014,In stock
+2090,Office-Staff,Office,72.0,2022,Out of stock
+2091,Office-Mrs,Office,906.0,2008,Discontinued
+2092,Electronics-Add,Office,482.0,2016,In stock
+2093,Home-Real,Home,756.0,2003,In stock
+2094,Office-Fight,Clothing,493.0,2009,Out of stock
+2095,Home-Seem,Office,491.0,2018,In stock
+2097,Office-Recent,Clothing,842.0,2006,Out of stock
+2098,Clothing-Trouble,Electronics,908.0,2004,In stock
+2099,Electronics-Several,Electronics,646.0,2019,In stock

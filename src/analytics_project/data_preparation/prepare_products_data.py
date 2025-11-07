@@ -102,7 +102,7 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     logger.info(f"FUNCTION START: remove_duplicates with dataframe shape={df.shape}")
     initial_count = len(df)
 
-    df = df.drop_duplicates(subset=['ProductID'])
+    df = df.drop_duplicates(subset=['productid'])
 
     removed_count = initial_count - len(df)
     logger.info(f"Removed {removed_count} duplicate rows")
@@ -128,7 +128,7 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     missing_by_col = df.isna().sum()
     logger.info(f"Missing values by column before handling:\n{missing_by_col}")
 
-    df.dropna(subset=['ManufactureYear'], inplace=True)
+    df.dropna(subset=['manufactureyear'], inplace=True)
 
     # Log missing values by column after handling
     missing_after = df.isna().sum()
@@ -151,7 +151,7 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     logger.info(f"FUNCTION START: remove_outliers with dataframe shape={df.shape}")
     initial_count = len(df)
 
-    df = df[(df['ManufactureYear'] > 2000) & (df['ManufactureYear'] < 2027)]
+    df = df[(df['manufactureyear'] > 2000) & (df['manufactureyear'] < 2027)]
 
     removed_count = initial_count - len(df)
     logger.info(f"Removed {removed_count} outlier rows")
@@ -171,7 +171,7 @@ def standardize_formats(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info(f"FUNCTION START: standardize_formats with dataframe shape={df.shape}")
 
-    df['UnitPrice'] = df['UnitPrice'].round(0)
+    df['unitprice'] = df['unitprice'].round(0)
 
     logger.info("Completed standardizing formats")
     return df
