@@ -182,3 +182,9 @@ To run prepare_products_data.py
 ```shell
 python3 src/analytics_project/data_preparation/prepare_products_data.py
 ```
+
+To run prepare_sales_data.py
+
+```shell
+python3 src/analytics_project/data_preparation/prepare_sales_data.py
+```
