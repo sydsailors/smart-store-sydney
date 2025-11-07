@@ -179,10 +179,10 @@ def standardize_formats(df: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     """
-    Main function for processing product data.
+    Main function for processing sales data.
     """
     logger.info("==================================")
-    logger.info("STARTING prepare_products_data.py")
+    logger.info("STARTING prepare_sales_data.py")
     logger.info("==================================")
 
     logger.info(f"Root         : {PROJECT_ROOT}")
@@ -225,7 +225,7 @@ def main() -> None:
     logger.info(f"Original shape: {df.shape}")
     logger.info(f"Cleaned shape:  {original_shape}")
     logger.info("==================================")
-    logger.info("FINISHED prepare_products_data.py")
+    logger.info("FINISHED prepare_sales_data.py")
     logger.info("==================================")
 
 
