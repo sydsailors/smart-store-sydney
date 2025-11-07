@@ -170,3 +170,15 @@ To run Jupyter Notebook
 ```shell
 uv run jupyter lab
 ```
+
+To run prepare_customers_data.py
+
+```shell
+python3 src/analytics_project/data_preparation/prepare_customers_data.py
+```
+
+To run prepare_products_data.py
+
+```shell
+python3 src/analytics_project/data_preparation/prepare_products_data.py
+```
