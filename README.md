@@ -188,3 +188,9 @@ To run prepare_sales_data.py
 ```shell
 python3 src/analytics_project/data_preparation/prepare_sales_data.py
 ```
+
+To run data_scrubber.py
+
+```shell
+python3 src/analytics_project/data_scrubber.py
+```
