@@ -86,3 +86,7 @@ Norwegian: Hei! Velkommen til Python-programmering.
 2025-10-31 11:29:INFO    AT data_prep.py:32: Reading raw data from /Users/sydneysailors/smart-store-sydney/data/raw/sales_data.csv.
 2025-10-31 11:29:INFO    AT data_prep.py:35: sales_data.csv: loaded DataFrame with shape 2001 rows x 7 cols
 2025-10-31 11:29:INFO    AT data_prep.py:64: Data preparation complete.
+2025-11-07 18:16:45,650 - INFO - Data cleaning complete. Logged results to project.log.
+2025-11-07 18:20:21,377 - INFO - Removed 1 duplicate records. Remaining rows: 3
+2025-11-07 18:20:21,382 - INFO - Filled 2 missing values with 'N/A'
+2025-11-07 18:20:21,392 - INFO - Data cleaning complete. Logged results to project.log.
