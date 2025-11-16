@@ -194,3 +194,48 @@ To run data_scrubber.py
 ```shell
 python3 src/analytics_project/data_scrubber.py
 ```
+
+To run etl_to_dw.py
+
+```shell
+python3 src/analytics_project/etl_to_dw.py
+```
+
+### WORKFLOW 4. Data Warehouse design and ETL to DW
+
+#### Fact table: Sales
+
+| Column         | Type    |
+|----------------|---------|
+| sale_id        | INT PK  |
+| date           | TEXT    |
+| customer_id    | TEXT FK |
+| product_id     | TEXT FK |
+| store_id       | TEXT    |
+| campaign_id    | TEXT    |
+| quantity       | INT     |
+| sales_amount   | REAL    |
+
+#### Dimension Tables
+
+#### Customers
+
+| Column             | Type    |
+|--------------------|---------|
+| customer_id        | TEXT PK |
+| name               | TEXT    |
+| region             | TEXT    |
+| join_date          | TEXT    |
+| age                | INT     |
+| subscription_status| TEXT    |
+
+#### Products
+
+| Column             | Type    |
+|--------------------|---------|
+| product_id         | TEXT PK |
+| product_name       | TEXT    |
+| category           | TEXT    |
+| unit_price         | TEXT    |
+| manufacture_year   | INT     |
+| availability_status| TEXT    |
