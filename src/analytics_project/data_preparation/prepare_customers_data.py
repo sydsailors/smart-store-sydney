@@ -183,6 +183,18 @@ def standardize_date_format(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
     return df
 
 
+def standardize_region(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Standardize the 'Region' column so all variations like 'east', 'East', 'EAST' become uniform.
+    """
+    if 'Region' in df.columns:
+        df['Region'] = df['Region'].str.strip().str.title()  # Converts to "East", "West", etc.
+        logger.info("Standardized 'Region' column to title case.")
+    else:
+        logger.warning("'Region' column not found in dataframe.")
+    return df
+
+
 #####################################
 # Define Main Function - The main entry point of the script
 #####################################
@@ -239,6 +251,9 @@ def main() -> None:
 
     # Standardize date format to YYYY-MM-DD
     df = standardize_date_format(df, "JoinDate")
+
+    # Standardize region names
+    df = standardize_region(df)
 
     # Save prepared data
     save_prepared_data(df, output_file)
