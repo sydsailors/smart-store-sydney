@@ -161,19 +161,31 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
 
 def standardize_formats(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Standardize the formatting of various columns.
-
-    Args:
-        df (pd.DataFrame): Input DataFrame.
-
-    Returns:
-        pd.DataFrame: DataFrame with standardized formatting.
+    Standardize formatting for various columns.
     """
-    logger.info(f"FUNCTION START: standardize_formats with dataframe shape={df.shape}")
+    logger.info("FUNCTION START: standardize_formats")
 
-    df['SaleDate'] = '5/4/25'
+    # Standardize sale date
+    df = standardize_date_format(df, "SaleDate")
 
     logger.info("Completed standardizing formats")
+    return df
+
+
+def standardize_date_format(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    """
+    Convert a date column to YYYY-MM-DD format.
+    """
+    if col_name not in df.columns:
+        logger.warning(f"Column '{col_name}' not found in dataframe.")
+        return df
+
+    try:
+        df[col_name] = pd.to_datetime(df[col_name], errors="coerce").dt.strftime("%Y-%m-%d")
+        logger.info(f"Standardized date format in column '{col_name}'.")
+    except Exception as e:
+        logger.error(f"Error formatting date column '{col_name}': {e}")
+
     return df
 
 

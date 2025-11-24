@@ -166,6 +166,23 @@ def remove_outliers(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def standardize_date_format(df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    """
+    Convert date column to YYYY-MM-DD format.
+    """
+    if col_name not in df.columns:
+        logger.warning(f"Column '{col_name}' not found in dataframe.")
+        return df
+
+    try:
+        df[col_name] = pd.to_datetime(df[col_name], errors="coerce").dt.strftime("%Y-%m-%d")
+        logger.info(f"Standardized date format in column '{col_name}'.")
+    except Exception as e:
+        logger.error(f"Error formatting date in column '{col_name}': {e}")
+
+    return df
+
+
 #####################################
 # Define Main Function - The main entry point of the script
 #####################################
@@ -216,6 +233,12 @@ def main() -> None:
 
     # Remove outliers
     df = remove_outliers(df)
+
+    # Read raw data
+    df = read_raw_data(input_file)
+
+    # Standardize date format to YYYY-MM-DD
+    df = standardize_date_format(df, "JoinDate")
 
     # Save prepared data
     save_prepared_data(df, output_file)
