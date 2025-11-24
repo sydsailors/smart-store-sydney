@@ -297,5 +297,3 @@ drill_df = spark.sql("""
 """)
 drill_df.show(10)
 ```
-
-
