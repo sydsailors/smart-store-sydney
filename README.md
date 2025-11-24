@@ -239,3 +239,63 @@ python3 src/analytics_project/etl_to_dw.py
 | unit_price         | TEXT    |
 | manufacture_year   | INT     |
 | availability_status| TEXT    |
+
+### WORKFLOW 5. Cross-Platform Reporting with Spark
+
+Operating system: MacOS 11.7
+Tool choices: Spark SQL to perform slice, dice, and drilldown operations.
+
+---
+
+#### Slice
+
+Shows all products that are in stock.
+
+```python
+spark.sql("""
+ SELECT *
+    FROM product
+    WHERE availability_status = 'In stock'
+""").show()
+```
+
+#### Dice
+
+Shows the total sales in the North region by age.
+
+```python
+dice_df = spark.sql("""
+    SELECT
+        c.region,
+        c.age,
+        SUM(s.sales_amount) AS total_sales
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    WHERE c.region = 'North'
+    GROUP BY c.region, c.age
+""")
+dice_df.show(10)
+```
+
+#### Drilldown
+
+Shows the total sales by customer, region, and store
+
+```python
+drill_df = spark.sql("""
+    SELECT
+        c.region,
+        s.store_id,
+        SUM(s.sales_amount) AS total_sales,
+        COUNT(s.sale_id) AS num_transactions
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    GROUP BY c.region, s.store_id
+    ORDER BY c.region, total_sales DESC
+""")
+drill_df.show(10)
+```
+
+
