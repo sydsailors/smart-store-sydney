@@ -259,6 +259,7 @@ spark.sql("""
 """).show()
 ```
 
+
 #### Dice
 
 Shows the total sales in the North region by age.
@@ -277,6 +278,7 @@ dice_df = spark.sql("""
 """)
 dice_df.show(10)
 ```
+
 
 #### Drilldown
 
@@ -297,3 +299,5 @@ drill_df = spark.sql("""
 """)
 drill_df.show(10)
 ```
+
+
