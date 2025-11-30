@@ -258,7 +258,7 @@ spark.sql("""
     WHERE availability_status = 'In stock'
 """).show()
 ```
-
+<img width="1440" height="900" alt="Screen Shot 2025-11-30 at 4 27 06 PM" src="https://github.com/user-attachments/assets/a65da03a-aba6-4ea3-9712-75ff51307928" />
 
 #### Dice
 
@@ -278,6 +278,7 @@ dice_df = spark.sql("""
 """)
 dice_df.show(10)
 ```
+<img width="1440" height="900" alt="Screen Shot 2025-11-30 at 4 28 01 PM" src="https://github.com/user-attachments/assets/9a48b5e4-b9bd-4506-8d44-051ce6c451bd" />
 
 
 #### Drilldown
@@ -299,6 +300,7 @@ drill_df = spark.sql("""
 """)
 drill_df.show(10)
 ```
+<img width="1440" height="900" alt="Screen Shot 2025-11-30 at 4 28 18 PM" src="https://github.com/user-attachments/assets/37cf3820-904e-4118-bb9a-507c88710ff7" />
 
 ### WORKFLOW 6. OLAP
 
