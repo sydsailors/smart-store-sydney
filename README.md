@@ -343,4 +343,74 @@ The following tools were used for analysis:
   - Matplotlib
 - Jupyter Notebooks
 
-### 
+### Workflow Logic
+
+- Load data into Jupyter (done for sales, customers, and products tables)
+
+```shell
+sales_df = (
+    spark.read.format("jdbc")
+    .options(url=f"jdbc:sqlite:{dw_path}", dbtable="sales", driver="org.sqlite.JDBC")
+    .load()
+)
+```
+
+- Create temporary SQL views in Spark
+
+```shell
+sales_df.createOrReplaceTempView("sale")
+customers_df.createOrReplaceTempView("customer")
+products_df.createOrReplaceTempView("product")
+```
+
+- Slice aggregation: filter data by specific dimensions (product category)
+
+```shell
+slice_df = spark.sql("""
+    SELECT *
+    FROM product
+    WHERE category = 'Electronics'
+""")
+slice_df.show(10)
+```
+
+- Dice aggregation: break down data into smaller dimensions
+
+```shell
+dice_df = spark.sql("""
+    SELECT
+        c.region AS region,
+        c.subscription_status AS subscription_status,
+        s.state AS state,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    GROUP BY
+        c.region,
+        c.subscription_status,
+        s.state
+    ORDER BY
+        c. region, c. subscription_status
+""").toPandas()
+print(dice_df.head(20))
+```
+
+- Drilldown aggregation: Explore data from general to specific levels
+
+```shell
+drilldown_df = spark.sql("""
+    SELECT
+        p.category,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN product p
+        ON s.product_id = p.product_id
+    GROUP BY p.category
+    ORDER BY total_revenue DESC
+""")
+
+drilldown_df.show()
+```
+
+
