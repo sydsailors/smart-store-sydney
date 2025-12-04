@@ -412,5 +412,3 @@ drilldown_df = spark.sql("""
 
 drilldown_df.show()
 ```
-
-
