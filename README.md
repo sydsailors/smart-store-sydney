@@ -412,3 +412,210 @@ drilldown_df = spark.sql("""
 
 drilldown_df.show()
 ```
+
+### WORKFLOW 7. Custom BI Project
+
+#### 1. The Business Goal
+
+The objective of this project is to analyze customer segments in order to determine which group generates the greatest sales performance.
+
+#### 2. Data Source
+
+This analysis was built on cleaned, prepared data on sales, customers, and products.
+
+#### 3. Tools Used
+
+The following tools were used for analysis:
+
+- Spark (PySpark)
+- SQL
+- Python
+  - Pandas
+  - Matplotlib
+- Jupyter Notebooks
+
+#### 4. Workflow & Logic
+
+- Load data into Jupyter (done for sales, customers, and products tables)
+
+```shell
+sales_df = (
+    spark.read.format("jdbc")
+    .options(url=f"jdbc:sqlite:{dw_path}", dbtable="sales", driver="org.sqlite.JDBC")
+    .load()
+)
+```
+
+- Create temporary SQL views in Spark
+
+```shell
+sales_df.createOrReplaceTempView("sale")
+customers_df.createOrReplaceTempView("customer")
+products_df.createOrReplaceTempView("product")
+```
+
+- Slice aggregations: filter data by specific dimensions (customers by gender)
+
+```shell
+slice_df = spark.sql("""
+    SELECT *
+    FROM customer
+    WHERE Gender = 'Male'
+""")
+slice_df.show(10)
+```
+
+```shell
+slice_df = spark.sql("""
+    SELECT *
+    FROM customer
+    WHERE Gender = 'Female'
+""")
+slice_df.show(10)
+```
+
+- Slice aggregation: filter data by specific dimensions (total revenue by state)
+
+```shell
+slice_df = spark.sql("""
+    SELECT
+        state,
+        SUM(sales_amount) AS total_revenue
+    FROM sale
+    GROUP BY state
+    ORDER BY total_revenue DESC
+""")
+slice_df.show(10)
+```
+
+- Dice aggregation: break down data into smaller dimensions
+
+```shell
+dice_df = spark.sql("""
+    SELECT
+        CASE
+            WHEN c.age BETWEEN 18 AND 25 THEN '18-25'
+            WHEN c.age BETWEEN 26 AND 35 THEN '26-35'
+            WHEN c.age BETWEEN 36 AND 50 THEN '36-50'
+            WHEN c.age > 50 THEN '51+'
+            ELSE 'Unknown'
+        END AS age_group,
+        c.gender AS gender,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    GROUP BY
+        age_group,
+        c.gender
+    ORDER BY
+        age_group,
+        c.gender
+""").toPandas()
+
+print(dice_df.head(20))
+```
+
+- Drilldown aggregations: Explore data from general to specific levels
+
+```shell
+drilldown_age_state_df = spark.sql("""
+    SELECT
+        s.state AS state,
+        CASE
+            WHEN c.age BETWEEN 18 AND 25 THEN '18-25'
+            WHEN c.age BETWEEN 26 AND 35 THEN '26-35'
+            WHEN c.age BETWEEN 36 AND 50 THEN '36-50'
+            WHEN c.age > 50 THEN '51+'
+            ELSE 'Unknown'
+        END AS age_group,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    GROUP BY
+        s.state,
+        age_group
+    ORDER BY
+        SUM(s.sales_amount) DESC,   -- Most revenue states first
+        s.state,
+        age_group
+""")
+
+drilldown_age_state_df.show()
+```
+
+```shell
+drilldown_age_gender_df = spark.sql("""
+    SELECT
+        CASE
+            WHEN c.age BETWEEN 18 AND 25 THEN '18-25'
+            WHEN c.age BETWEEN 26 AND 35 THEN '26-35'
+            WHEN c.age BETWEEN 36 AND 50 THEN '36-50'
+            WHEN c.age > 50 THEN '51+'
+            ELSE 'Unknown'
+        END AS age_group,
+        c.Gender AS gender,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN customer c
+        ON s.customer_id = c.customer_id
+    GROUP BY
+        CASE
+            WHEN c.age BETWEEN 18 AND 25 THEN '18-25'
+            WHEN c.age BETWEEN 26 AND 35 THEN '26-35'
+            WHEN c.age BETWEEN 36 AND 50 THEN '36-50'
+            WHEN c.age > 50 THEN '51+'
+            ELSE 'Unknown'
+        END,
+        c.Gender
+    ORDER BY
+        total_revenue DESC
+""")
+
+drilldown_age_gender_df.show()
+```
+
+```shell
+drilldown_product_df = spark.sql("""
+    SELECT
+        p.category AS category,
+        p.product_name AS product,
+        SUM(s.sales_amount) AS total_revenue
+    FROM sale s
+    JOIN product p
+        ON s.product_id = p.product_id
+    GROUP BY
+        p.category,
+        p.product_name
+    ORDER BY
+        SUM(s.sales_amount) DESC,   -- highest revenue overall first
+        p.category,
+        p.product_name
+""")
+
+drilldown_product_df.show()
+```
+
+#### 5. Results
+
+From this analysis, we can conclude that males generate more revenue than females across all segments. Washington is the highest-revenue state at $58,104.35, while Louisiana generates the least. Among the age groups (18–25, 26–35, 36–50, and 51+), the 51+ group contributes the most revenue, with males continuing to lead. In terms of product categories, “Doctors Offices” generates the highest revenue, while “Home – Yourself” generates the lowest.
+
+
+#### 6. Suggested Business Action
+
+- Target high performing demographics more directly
+  - Since we now know that males in the 51+ age group generate the most revenue, or that Washington brings in the highest revenue, we can aim promotions and market campaigns toward them.
+- Improve performance in low revenue areas
+  - We can analyze potential barriers in low revenue states such as Louisiana so we can start to introduce localized campaigns.
+- Increase inventory, marketing, or deals for "Doctors Office" category of products
+- Reevaluate low performing product categories
+  - Consider updating product line, adjust pricing, and run target advertisements.
+
+#### 7. Challenges
+
+Some challenges I ran into during this project included figuring out the best visual aids, and having to rename the drilldown aggregations to have different names in order to create different visuals.
+
+#### 8. Ethical Considerations
+
+This analysis is based on sales transactions from a single day, rather than an extended timeframe. This may not reflect typical customer behavior and results could be misleading.
