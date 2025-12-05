@@ -601,6 +601,18 @@ drilldown_product_df.show()
 
 From this analysis, we can conclude that males generate more revenue than females across all segments. Washington is the highest-revenue state at $58,104.35, while Louisiana generates the least. Among the age groups (18–25, 26–35, 36–50, and 51+), the 51+ group contributes the most revenue, with males continuing to lead. In terms of product categories, “Doctors Offices” generates the highest revenue, while “Home – Yourself” generates the lowest.
 
+<img width="546" height="397" alt="Screen Shot 2025-12-04 at 10 25 57 PM" src="https://github.com/user-attachments/assets/c256485e-b585-4ce2-a900-f5438ffea533" />
+
+<img width="872" height="482" alt="Screen Shot 2025-12-04 at 10 26 45 PM" src="https://github.com/user-attachments/assets/a45cb63b-e27b-4d2b-b132-3b440d2d84d8" />
+
+<img width="850" height="550" alt="Screen Shot 2025-12-04 at 10 27 09 PM" src="https://github.com/user-attachments/assets/435509a8-2e04-4312-abce-ff32f64613e6" />
+
+<img width="1191" height="694" alt="Screen Shot 2025-12-04 at 10 27 37 PM" src="https://github.com/user-attachments/assets/e58f6129-9568-4e1f-995a-a4d8003bcf3f" />
+
+<img width="768" height="491" alt="Screen Shot 2025-12-04 at 10 28 01 PM" src="https://github.com/user-attachments/assets/d1f72e4d-3f9f-4424-967f-84ebcc134e79" />
+
+<img width="494" height="603" alt="Screen Shot 2025-12-04 at 10 28 44 PM" src="https://github.com/user-attachments/assets/25102901-620f-43c8-8f87-aac84721afbb" />
+
 
 #### 6. Suggested Business Action
 
